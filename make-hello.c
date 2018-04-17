@@ -116,29 +116,41 @@ int main()
 	writeObject(
 		2,
 		"<<"
-			"/Resources << >> "
-			"/Contents [3 0 R] "
+			"/Resources 3 0 R "
+			"/Contents [4 0 R] "
 			"/Parent 1 0 R "
 			"/Type /Page "
 			"/MediaBox [0 0 792 612]"
 		">>"
 	);
-	writeStream(
+	writeObject(
 		3,
-		"200 100 m 200 500 l 500 100 l h W S "
-		"100 100 m 300 200 l 700 100 l S "
-		"8 w 1 J "
-		"100 200 m 300 300 l 700 200 l S "
-		"[20] 0 d "
-		"100 300 m 300 400 l 700 300 l S"
+		"<<"
+			"/ExtGState <<"
+				"/gs1 <<"
+					"/ca 0.5"
+				">> "
+			">> "
+		">>"
+	);
+	writeStream(
+		4,
+		"2.0 w "
+		"/gs1 gs "
+		"0.75 g "
+		"200 250 m 300 350 400 450 500 250 c "
+		"400 250 300 200 y h B "
+		"1 0 0 1 100 100 cm "
+		"200 250 m 300 350 400 450 500 250 c "
+		"400 250 300 200 y h B"
 	);
 	writeObject(
-		4,
+		5,
 		"<<"
 			"/Type /Catalog "
 			"/Pages 1 0 R"
 		">>"
 	);
 	writeXref();
-	writeTrailer(4);
+	writeTrailer(5);
 }
