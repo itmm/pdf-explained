@@ -135,19 +135,26 @@ int main()
 	writeStream(
 		4,
 		NULL,
-		"/X1 Do "
-		"0.5 0 0 0.5 0 0 cm "
-		"/X1 Do"
+		"q "
+			"1 0 0 1 100 100 cm "
+			"200 0 0 200 0 0 cm "
+			"/X1 Do "
+		"Q "
+		"q "
+			"1 0 0 1 400 100 cm "
+			"100 0 0 100 0 0 cm "
+			"/X1 Do "
+		"Q"
 	);
 	writeStream(
 		5,
 		"/Type /XObject\n"
-		"/Subtype /Form\n"
-		"/BBox [0 0 792 612]\n",
-		"2.0 w "
-		"0.5 g "
-		"250 300 m 350 400 450 500 500 300 c "
-		"450 300 350 250 y h B"
+		"/Subtype /Image\n"
+		"/ColorSpace /DeviceGray\n"
+		"/Width 8\n"
+		"/Height 8\n"
+		"/BitsPerComponent 1",
+		"@`pxxp`@"
 	);
 	writeObject(
 		6,
