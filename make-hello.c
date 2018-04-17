@@ -126,23 +126,31 @@ int main()
 	writeObject(
 		3,
 		"<<"
-			"/ExtGState <<"
-				"/gs1 <<"
-					"/ca 0.5"
+			"/Pattern <<"
+				"/GradientShading <<"
+					"/Type /Pattern "
+					"/PatternType 2 "
+					"/Shading <<"
+						"/ColorSpace /DeviceGray "
+						"/ShadingType 2 "
+						"/Function <<"
+							"/FunctionType 2 "
+							"/N 1 "
+							"/Domain [0 1]"
+						">> "
+						"/Coords [150 200 450 500] "
+						"/Extend [true true]"
+					">> "
 				">> "
 			">> "
 		">>"
 	);
 	writeStream(
 		4,
-		"2.0 w "
-		"/gs1 gs "
-		"0.75 g "
-		"200 250 m 300 350 400 450 500 250 c "
-		"400 250 300 200 y h B "
-		"1 0 0 1 100 100 cm "
-		"200 250 m 300 350 400 450 500 250 c "
-		"400 250 300 200 y h B"
+		"/Pattern cs "
+		"/GradientShading scn "
+		"250 300 m 350 500 450 500 550 300 c "
+		"450 300 350 250 y h f"
 	);
 	writeObject(
 		5,
