@@ -43,9 +43,10 @@ static void writeObject(int id, const char *data) {
 	write("endobj");
 }
 
-static void writeStream(int id, const char *stream) {
+static void writeStream(int id, const char *mapping, const char *stream) {
 	writeObjectHeader(id);
 	write("<<");
+	if (mapping) { write(mapping); }
 	char buffer[20];
 	snprintf(buffer, sizeof(buffer), "/Length %d", (int) strlen(stream));
 	write(buffer);
@@ -126,39 +127,35 @@ int main()
 	writeObject(
 		3,
 		"<<"
-			"/Pattern <<"
-				"/GradientShading <<"
-					"/Type /Pattern "
-					"/PatternType 2 "
-					"/Shading <<"
-						"/ColorSpace /DeviceGray "
-						"/ShadingType 3 "
-						"/Function <<"
-							"/FunctionType 2 "
-							"/N 1 "
-							"/Domain [0 1]"
-						">> "
-						"/Coords [400 400 0 400 400 200] "
-						"/Extend [true true]"
-					">> "
-				">> "
+			"/XObject <<"
+				"/X1 5 0 R"
 			">> "
 		">>"
 	);
 	writeStream(
 		4,
-		"/Pattern cs "
-		"/GradientShading scn "
-		"250 300 m 350 500 450 500 550 300 c "
-		"450 300 350 250 y h f"
+		NULL,
+		"/X1 Do "
+		"0.5 0 0 0.5 0 0 cm "
+		"/X1 Do"
+	);
+	writeStream(
+		5,
+		"/Type /XObject\n"
+		"/Subtype /Form\n"
+		"/BBox [0 0 792 612]\n",
+		"2.0 w "
+		"0.5 g "
+		"250 300 m 350 400 450 500 500 300 c "
+		"450 300 350 250 y h B"
 	);
 	writeObject(
-		5,
+		6,
 		"<<"
 			"/Type /Catalog "
 			"/Pages 1 0 R"
 		">>"
 	);
 	writeXref();
-	writeTrailer(5);
+	writeTrailer(6);
 }
