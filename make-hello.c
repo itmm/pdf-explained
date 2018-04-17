@@ -116,40 +116,24 @@ int main()
 	writeObject(
 		2,
 		"<<"
-			"/Resources 3 0 R "
-			"/Contents [4 0 R] "
+			"/Resources << >> "
+			"/Contents [3 0 R] "
 			"/Parent 1 0 R "
 			"/Type /Page "
-			"/MediaBox [0 0 612 792]"
-		">>"
-	);
-	writeObject(
-		3,
-		"<<"
-			"/Font <<"
-				"/F0 <<"
-					"/Subtype /Type1 "
-					"/Type /Font "
-					"/BaseFont /Times-Italic"
-				">> "
-			">> "
+			"/MediaBox [0 0 792 612]"
 		">>"
 	);
 	writeStream(
-		4,
-		"1. 0. 0. 1. 50. 700. cm\n"
-		"BT\n"
-			"\t/F0 36. Tf\n"
-			"\t(Hello, World!) Tj\n"
-		"ET"
+		3,
+		"200 150 m 600 450 l S"
 	);
 	writeObject(
-		5,
+		4,
 		"<<"
 			"/Type /Catalog "
 			"/Pages 1 0 R"
 		">>"
 	);
 	writeXref();
-	writeTrailer(5);
+	writeTrailer(4);
 }
