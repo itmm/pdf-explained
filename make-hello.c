@@ -141,7 +141,7 @@ int main()
 		"BT\n"
 			"\t/F0 36. Tf\n"
 			"\t(Hello, World!) Tj\n"
-		"ET\n"
+		"ET"
 	);
 	writeObject(
 		5,
