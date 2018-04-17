@@ -43,10 +43,9 @@ static void writeObject(int id, const char *data) {
 	write("endobj");
 }
 
-static void writeStream(int id, const char *mapping, const char *stream) {
+static void writeStream(int id, const char *stream) {
 	writeObjectHeader(id);
 	write("<<");
-	if (mapping) { write(mapping); }
 	char buffer[20];
 	snprintf(buffer, sizeof(buffer), "/Length %d", (int) strlen(stream));
 	write(buffer);
@@ -121,48 +120,41 @@ int main()
 			"/Contents [4 0 R] "
 			"/Parent 1 0 R "
 			"/Type /Page "
-			"/MediaBox [0 0 792 612]"
+			"/MediaBox [0 0 612 792]"
 		">>"
 	);
 	writeObject(
 		3,
 		"<<"
-			"/XObject <<"
-				"/X1 5 0 R"
+			"/Font <<"
+				"/F0 <<"
+					"/Subtype /Type1 "
+					"/Type /Font "
+					"/BaseFont /Times-Italic"
+				">> "
 			">> "
 		">>"
 	);
 	writeStream(
 		4,
-		NULL,
-		"q "
-			"1 0 0 1 100 100 cm "
-			"200 0 0 200 0 0 cm "
-			"/X1 Do "
-		"Q "
-		"q "
-			"1 0 0 1 400 100 cm "
-			"100 0 0 100 0 0 cm "
-			"/X1 Do "
-		"Q"
-	);
-	writeStream(
-		5,
-		"/Type /XObject\n"
-		"/Subtype /Image\n"
-		"/ColorSpace /DeviceGray\n"
-		"/Width 8\n"
-		"/Height 8\n"
-		"/BitsPerComponent 1",
-		"@`pxxp`@"
+		"BT\n"
+			"\t/F0 36 Tf\n"
+			"\t1 0 0 1 120 350 Tm\n"
+			"\t50 TL\n"
+			"\t(Character and Word Spacing) Tj T*\n"
+			"\t3 Tc\n"
+			"\t(Character and Word Spacing) Tj T*\n"
+			"\t10 Tw\n"
+			"\t(Character and Word Spacing) Tj\n"
+		"ET"
 	);
 	writeObject(
-		6,
+		5,
 		"<<"
 			"/Type /Catalog "
 			"/Pages 1 0 R"
 		">>"
 	);
 	writeXref();
-	writeTrailer(6);
+	writeTrailer(5);
 }
