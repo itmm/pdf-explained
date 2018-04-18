@@ -139,12 +139,10 @@ int main()
 		4,
 		"BT\n"
 			"\t/F0 72 Tf\n"
-			"\t48 TL\n"
-			"\t1 0 0 1 140 290 Tm\n"
-			"\t(Text) Tj\n"
-			"\t20 Ts (Up) Tj\n"
-			"\t0 Ts (and) Tj\n"
-			"\t-20 Ts (Down) Tj\n"
+			"\t90 TL\n"
+			"\t1 0 0 1 240 330 Tm\n"
+			"\t[(PJ WAYNE)] TJ T*\n"
+			"\t[(P)150(J )(W)150(A)80(YN)20(E)] TJ\n"
 		"ET"
 	);
 	writeObject(
