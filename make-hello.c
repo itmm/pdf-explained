@@ -137,14 +137,14 @@ int main()
 	);
 	writeStream(
 		4,
-		"0.96 0.25 -0.25 0.96 0 0 cm\n"
 		"BT\n"
-			"\t/F0 48 Tf\n"
+			"\t/F0 72 Tf\n"
 			"\t48 TL\n"
-			"\t1 0 0 1 270 240 Tm\n"
-			"\t(Text and graphics) Tj T*\n"
-			"\t(transforms combined) Tj T*\n"
-			"\t(with newlines) Tj\n"
+			"\t1 0 0 1 140 290 Tm\n"
+			"\t(Text) Tj\n"
+			"\t20 Ts (Up) Tj\n"
+			"\t0 Ts (and) Tj\n"
+			"\t-20 Ts (Down) Tj\n"
 		"ET"
 	);
 	writeObject(
