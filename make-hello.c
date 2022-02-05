@@ -15,7 +15,7 @@ static struct Object *allObjects = NULL;
 	
 static void write(const char *str) {
 	printf("%s\n", str);
-	byteOffset += strlen(str);
+	byteOffset += strlen(str) + 1;
 }
 
 static inline void writeHeader() {
@@ -74,10 +74,10 @@ static void writeXref() {
 	for (int i = 0; i <= maxObjectId; ++i) {
 		struct Object *obj = findObject(i);
 		if (obj) { 
-			snprintf(buffer, sizeof(buffer), "%010d %05d n", obj->offset, 0);
+			snprintf(buffer, sizeof(buffer), "%010d %05d n ", obj->offset, 0);
 			write(buffer);
 		} else {
-			write("0000000000 65535 f");
+			write("0000000000 65535 f ");
 		}
 	}
 }
@@ -130,7 +130,7 @@ int main()
 				"/F0 <<"
 					"/Subtype /Type1 "
 					"/Type /Font "
-					"/BaseFont /Times-Italic"
+					"/BaseFont /Times-Roman"
 				">> "
 			">> "
 		">>"
@@ -138,11 +138,9 @@ int main()
 	writeStream(
 		4,
 		"BT\n"
-			"\t/F0 72 Tf\n"
-			"\t90 TL\n"
-			"\t1 0 0 1 240 330 Tm\n"
-			"\t[(PJ WAYNE)] TJ T*\n"
-			"\t[(P)150(J )(W)150(A)80(YN)20(E)] TJ\n"
+			"\t/F0 12 Tf\n"
+			"\t1 0 0 1 72 720 Tm\n"
+			"\t[(Just some text.)] TJ\n"
 		"ET"
 	);
 	writeObject(
